@@ -6,10 +6,8 @@ using UnityEngine;
 public class Nave : MonoBehaviour
 {
 
-    public float speed = 0.1f;
-    public float maxSpeed = 0;
-    public float minSpeed = 0;
-
+    public float velocidad = 0.1f;
+    public float multiplicadorBoost = 1;
     public float temporizadorAcelerar = 10;
 
     public Renderer motorDerecho;
@@ -21,11 +19,14 @@ public class Nave : MonoBehaviour
 
     private Rigidbody rb;
 
+    private float maxSpeed = 0;
+    private float minSpeed = 0;
+
     private void Awake()
     {
         colorOriginal = motorDerecho.material.color;
-        maxSpeed = speed * 2;
-        minSpeed = speed;
+        maxSpeed = velocidad * multiplicadorBoost;
+        minSpeed = velocidad;
         rb = this.GetComponent<Rigidbody>();
     }
 
@@ -37,7 +38,13 @@ public class Nave : MonoBehaviour
 
     private void applyMovement()
     {
-        if (Input.GetKey(KeyCode.Space)) { rb.AddForce(this.transform.forward * rb.mass * speed); }
+        float currentSpeed = 0;
+
+        if (Input.GetKey(KeyCode.Space)) {
+            currentSpeed = Input.GetKey(KeyCode.LeftShift) ? maxSpeed : minSpeed;
+            rb.AddForce(this.transform.forward * rb.mass * currentSpeed);
+        }
+
     }
 
     private void applyRotation()
@@ -64,11 +71,7 @@ public class Nave : MonoBehaviour
             sumarZ = -1;
         }
 
-        transform.eulerAngles = new Vector3(
-            transform.eulerAngles.x + sumarY,
-            transform.eulerAngles.y + sumarX,
-            transform.eulerAngles.z + sumarZ
-        );
+        transform.Rotate(new Vector3(sumarY, sumarX, sumarZ));
     }
 
 }
