@@ -19,66 +19,56 @@ public class Nave : MonoBehaviour
 
     private bool acelerando = false;
 
+    private Rigidbody rb;
+
     private void Awake()
     {
         colorOriginal = motorDerecho.material.color;
         maxSpeed = speed * 2;
         minSpeed = speed;
+        rb = this.GetComponent<Rigidbody>();
     }
 
     void FixedUpdate()
     {
          applyRotation();
          applyMovement();
-
     }
 
     private void applyMovement()
     {
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.Translate(Vector3.forward * speed);
-        } else if (Input.GetKey(KeyCode.S))
-        {
-            transform.Translate(-Vector3.forward * speed);
-        }
-
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector3.right * speed);
-        } else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(Vector3.left * speed);
-        }
+        if (Input.GetKey(KeyCode.Space)) { rb.AddForce(this.transform.forward * rb.mass * speed); }
     }
 
     private void applyRotation()
     {
-
         float sumarX = 0;
         float sumarY = 0;
+        float sumarZ = 0;
         
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            sumarY = 1;
-        } else if (Input.GetKey(KeyCode.DownArrow))
-        {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
             sumarY = -1;
+        } else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
+            sumarY = 1;
         }
 
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
             sumarX = 1;
-        } else if (Input.GetKey(KeyCode.LeftArrow))
-        {
+        } else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
             sumarX = -1;
+        }
+
+        if (Input.GetKey(KeyCode.Q)) { 
+            sumarZ = 1;
+        } else if (Input.GetKey(KeyCode.E)) {
+            sumarZ = -1;
         }
 
         transform.eulerAngles = new Vector3(
             transform.eulerAngles.x + sumarY,
             transform.eulerAngles.y + sumarX,
-            transform.eulerAngles.z);
+            transform.eulerAngles.z + sumarZ
+        );
     }
 
 }
