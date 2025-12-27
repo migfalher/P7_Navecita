@@ -40,38 +40,27 @@ public class Nave : MonoBehaviour
     {
         float currentSpeed = 0;
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
             currentSpeed = Input.GetKey(KeyCode.LeftShift) ? maxSpeed : minSpeed;
-            rb.AddForce(this.transform.forward * rb.mass * currentSpeed);
+        } else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
+            currentSpeed = minSpeed * -1;
         }
+
+        rb.AddForce(this.transform.forward * rb.mass * currentSpeed);
 
     }
 
     private void applyRotation()
     {
-        float sumarX = 0;
-        float sumarY = 0;
-        float sumarZ = 0;
-        
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W)) {
-            sumarY = -1;
-        } else if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) {
-            sumarY = 1;
-        }
+        float anguloX = 0;
 
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) {
-            sumarX = 1;
+            anguloX = 1;
         } else if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) {
-            sumarX = -1;
+            anguloX = -1;
         }
 
-        if (Input.GetKey(KeyCode.Q)) { 
-            sumarZ = 1;
-        } else if (Input.GetKey(KeyCode.E)) {
-            sumarZ = -1;
-        }
-
-        transform.Rotate(new Vector3(sumarY, sumarX, sumarZ));
+        transform.Rotate(new Vector3(0, anguloX, 0));
     }
 
 }

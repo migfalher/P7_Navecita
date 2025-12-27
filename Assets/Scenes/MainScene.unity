@@ -220,7 +220,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 54788935922531796, guid: 118efdd877e08f94db8b8ba4780bf098, type: 3}
       propertyPath: m_UseGravity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7914453987321614430, guid: 118efdd877e08f94db8b8ba4780bf098, type: 3}
       propertyPath: speed
@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914453987321614430, guid: 118efdd877e08f94db8b8ba4780bf098, type: 3}
       propertyPath: velocidad
-      value: 50
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 7914453987321614430, guid: 118efdd877e08f94db8b8ba4780bf098, type: 3}
       propertyPath: multiplicadorBoost
@@ -2247,6 +2247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1598975569}
+  - component: {fileID: 1598975570}
   m_Layer: 0
   m_Name: MonedaManager
   m_TagString: Untagged
@@ -2309,6 +2310,19 @@ Transform:
   - {fileID: 2026732076}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598975570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598975568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4310a36d21265c645ad012192316386c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonedaManager
+  moneda: {fileID: 3937619849995760609, guid: af61f7e68a1136b4c82dd2c8a34b63c8, type: 3}
 --- !u!1 &1732633328
 GameObject:
   m_ObjectHideFlags: 0
