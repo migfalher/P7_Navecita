@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1628457741064384501}
   - component: {fileID: 9013031671978774098}
   - component: {fileID: 7038608540403447414}
-  - component: {fileID: 5431292327693784485}
+  - component: {fileID: 4624891627321704398}
   m_Layer: 0
   m_Name: Moneda
   m_TagString: Untagged
@@ -105,8 +105,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Moneda
   velocidadRotacion: 2
   distanciaPlayer: 200
---- !u!135 &5431292327693784485
-SphereCollider:
+  manager: {fileID: 0}
+--- !u!65 &4624891627321704398
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -124,5 +125,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.019999998, y: 0.0023426956, z: 0.020000005}
+  m_Center: {x: 0, y: -0.00017134663, z: 0}

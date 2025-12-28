@@ -7,14 +7,14 @@ public class MonedaManager : MonoBehaviour
     public GameObject moneda;
 
     // private components
-    private List<GameObject> spawnList;
-    private List<int> positionsList;
+    private List<GameObject> spawnList = new List<GameObject>();
+    private List<int> positionsList = new List<int>();
+    private int monedaCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        spawnList = new List<GameObject>();
-        positionsList = new List<int>();
+        moneda.GetComponent<Moneda>().manager = this;
 
         for (int i = 1; i <= 40; i++)
         {
@@ -44,9 +44,8 @@ public class MonedaManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void sumUpMonedaCount()
     {
-        
+        monedaCount++;
     }
 }
