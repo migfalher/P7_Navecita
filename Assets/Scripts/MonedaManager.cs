@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class MonedaManager : MonoBehaviour
 {
     // GameObject to instantiate
+    public TMP_Text monedaTMP;
     public GameObject moneda;
 
     // private components
@@ -47,5 +49,6 @@ public class MonedaManager : MonoBehaviour
     public void sumUpMonedaCount()
     {
         monedaCount++;
+        monedaTMP.text = monedaCount.ToString("00");
     }
 }
