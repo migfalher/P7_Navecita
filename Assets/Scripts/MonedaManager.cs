@@ -51,4 +51,6 @@ public class MonedaManager : MonoBehaviour
         monedaCount++;
         monedaTMP.text = monedaCount.ToString("00");
     }
+
+    public int getMonedas() {  return monedaCount; }
 }

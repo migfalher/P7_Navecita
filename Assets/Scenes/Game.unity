@@ -2419,10 +2419,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70abb601464ac5b4999f033bd4eb9ad3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AroManager
-  aroTMP: {fileID: 1919783152}
   matEspera: {fileID: 2100000, guid: c0119676a2d0a184ca1759158e947249, type: 2}
   matSiguiente: {fileID: 2100000, guid: 2dc850897eb44c64bb090a26ef32c599, type: 2}
   matCruzado: {fileID: 2100000, guid: 2369ed18197a165499ef061800d25274, type: 2}
+  aroTMP: {fileID: 1919783152}
+  monedaManager: {fileID: 1598975568}
+  tiempoManager: {fileID: 511458513}
 --- !u!1 &1529148478
 GameObject:
   m_ObjectHideFlags: 0
