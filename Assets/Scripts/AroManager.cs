@@ -51,10 +51,10 @@ public class AroManager : MonoBehaviour
 
         Material mat = aroActual.GetComponent<Renderer>().sharedMaterial;
         if (mat == (matSiguiente)) {
+            aroCount--;
             if (aroSiguiente != null) {
                 aroSiguiente.GetComponent<Renderer>().material = matSiguiente;
                 aroActual.GetComponent<Renderer>().material = matCruzado;
-                aroCount--;
                 aroTMP.text = aroCount.ToString("00");
             } else {
                 StartCoroutine(LoadVictoryScene());
@@ -70,6 +70,7 @@ public class AroManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         Data.monedas = monedaScript.getMonedas();
         Data.segundos = tiempoScript.getTiempo();
+        Data.aros = aroList.Count - aroCount;
         Data.victoria = true;
         SceneManager.LoadScene("Finish");
     }
@@ -77,8 +78,9 @@ public class AroManager : MonoBehaviour
     private IEnumerator LoadFailureScene()
     {
         yield return new WaitForSeconds(1);
-        Data.monedas = 0;
-        Data.segundos = 0;
+        Data.monedas = monedaScript.getMonedas();
+        Data.segundos = tiempoScript.getTiempo();
+        Data.aros = aroCount;
         Data.victoria = false;
         SceneManager.LoadScene("Finish");
     }
